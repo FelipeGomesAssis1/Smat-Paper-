@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Agenda</title>
+     <link rel="stylesheet" href ="bootstrap/css/bootstrap.min.css" >
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style3.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+   
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Event Calendar Design - Bootsnipp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+            body {
+        padding: 20px 0px 200px;
+    }
+    h1.title {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 900;
+    }
+    .calendar {
+        margin: 0px 40px;
+    }
+    .popover.calendar-event-popover {
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        color: rgb(120, 120, 120);
+        border-radius: 2px;
+        max-width: 300px;
+    }
+    .popover.calendar-event-popover h4 {
+        font-size: 14px;
+        font-weight: 900;
+    }
+    .popover.calendar-event-popover .location,
+    .popover.calendar-event-popover .datetime {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    .popover.calendar-event-popover .location > span,
+    .popover.calendar-event-popover .datetime > span {
+        margin-right: 10px;
+    }
+    .popover.calendar-event-popover .space,
+    .popover.calendar-event-popover .attending {
+        margin-top: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgb(160, 160, 160);
+        font-weight: 700;
+    }
+    .popover.calendar-event-popover .space > .pull-right,
+    .popover.calendar-event-popover .attending > .pull-right {
+        font-weight: 400;
+    }
+    .popover.calendar-event-popover .attending {
+        margin-top: 5px;
+        font-size: 18px;
+        padding: 0px 10px 5px;
+    }
+    .popover.calendar-event-popover .attending img {
+        border-radius: 50%;
+        width: 40px;
+    }
+    .popover.calendar-event-popover .attending span.attending-overflow {
+        display: inline-block;
+        width: 40px;
+        background-color: rgb(200, 200, 200);
+        border-radius: 50%;
+        padding: 8px 0px 7px;
+        text-align: center;
+    }
+    .popover.calendar-event-popover .attending > .pull-right {
+        font-size: 28px;
+    }
+    .popover.calendar-event-popover a.btn {
+        margin-top: 10px;
+        width: 100%;
+        border-radius: 3px;
+    }
+    [data-toggle="calendar"] > .row > .calendar-day {
+        font-family: 'Roboto', sans-serif;
+        width: 14.28571428571429%;
+        border: 1px solid rgb(235, 235, 235);
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+        min-height: 120px;
+    }
+    [data-toggle="calendar"] > .row > .calendar-day.calendar-no-current-month {
+        color: rgb(200, 200, 200);
+    }
+    [data-toggle="calendar"] > .row > .calendar-day:last-child {
+        border-right-width: 1px;
+    }
+
+    [data-toggle="calendar"] > .row:last-child > .calendar-day {
+        border-bottom-width: 1px;
+    }
+
+    .calendar-day > time {
+        position: absolute;
+        display: block;
+        bottom: 0px;
+        left: 0px;
+        font-size: 12px;
+        font-weight: 300;
+        width: 100%;
+        padding: 10px 10px 3px 0px;
+        text-align: right;
+    }
+    .calendar-day > .events {
+        cursor: pointer;
+    }
+    .calendar-day > .events > .event h4 {
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 3px;
+    }
+    .calendar-day > .events > .event > .desc,
+    .calendar-day > .events > .event > .location,
+    .calendar-day > .events > .event > .datetime,
+    .calendar-day > .events > .event > .attending {
+        display: none;
+    }
+    .calendar-day > .events > .event > .progress {
+        height: 10px;
+    }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Smart Paper</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+               
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Funcionalidades</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="index.html">Quadro Tarefas</a>
+                             
+                        </li>
+                        <li>
+                            <a href="index5.html">Agenda</a>
+                        </li>
+                        <li>
+                            <a href="index2.html">Anotações</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Minha Conta</a>
+                </li>
+             
+                <li>
+                    <a href="#">Amigos</a>
+                </li>
+                <li>
+                    <a href="#">Configurações</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Ajuda</a>
+                </li>
+               
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="navs" >Agenda</a>
+                            </li>   
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+          
+
+<h1 class="title text-center"> Novembro 2020 </h1>
+    <div class="calendar" data-toggle="calendar">
+        <div class="row">
+            <div class="col-xs-12 calendar-day calendar-no-current-month">
+                <time datetime="2014-06-29">29</time>
+            </div>
+            <div class="col-xs-12 calendar-day calendar-no-current-month">
+                <time datetime="2014-06-30">30</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-01">01</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-02">02</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-03">03</time>
+                <div class="events">
+                    <div class="event">
+                        <h4></h4>
+                        <div class="desc">
+                            <p>Take a Break and enjoy Live dance and Art from Eries own local Talent</p>
+                            <p>Support for this program is provided in part from an Erie Arts & Culture Project Grant, made possible by community contributions to the Combined Arts & Cultural Campaign and the Erie Arts Endowment.</p>
+                        </div>
+                        <div class="location"> <span class="glyphicon glyphicon-map-marker"></span> State St and Rt 5, Erie, Pa.</div>
+                        <div class="datetime"> <span class="glyphicon glyphicon-time"></span> 12:00am - 1:00pm</div>
+                        <div class="attending">
+                            <img src="http://api.randomuser.me/portraits/women/54.jpg" />
+                            <img src="http://api.randomuser.me/portraits/men/27.jpg" />
+                            <img src="http://api.randomuser.me/portraits/men/61.jpg" />
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="134" style="width: 4.477%;">
+                                <span class="sr-only">4.477% Filled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-04">04</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-05">05</time>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-06">06</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-07">07</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-08">08</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-09">09</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-10">10</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-11">11</time>
+                <div class="events">
+                    <div class="event">
+                        <h4></h4>
+                        <div class="desc">
+                            <p>We will be showing local artists films on our new 16 foot movie screen with feature film last "Carnival Of Souls", come see the new BT, hang out and socialize while enjoying some local talent. FREE event, suggested $2 or $3 donation. Concessions, popcorn, soda etc available so come hungry!!</p>
+                            <p>*This event is all ages welcomed and also handicapped accessible (side entrance ramp)</p>
+                            <p>Featuring :</p>
+                            <ul>
+                                <li><a href="https://www.youtube.com/user/walrys11/videos">Jack Rys</a></li>
+                                <li><a href="http://society6.com/wombglow">Alex Wilson</a></li>
+                                <li><a href="http://www.erieartcompany.com/">Brad Ford</a></li>
+                                <li><a href="http://www.youtube.com/watch?v=dkTz0EvfEiY">Carnival of Souls</a> (Trailer)</li>
+                            </ul>
+                        </div>
+                        <div class="location"> <span class="glyphicon glyphicon-map-marker"></span> 145 West 11th Street, Erie, Pa.</div>
+                        <div class="datetime"> <span class="glyphicon glyphicon-time"></span> 7:00pm - ?</div>
+                        <div class="attending">
+                            <img src="http://api.randomuser.me/portraits/women/31.jpg" />
+                            <img src="http://api.randomuser.me/portraits/women/47.jpg" />
+                            <img src="http://api.randomuser.me/portraits/women/93.jpg" />
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="368" style="width: 11.68%;">
+                                <span class="sr-only">11.68% Filled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-12">12</time>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-13">13</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-14">14</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-15">15</time>
+                <div class="events">
+                    <div class="event">
+                        <h4></h4>
+                        <div class="desc">
+                            <p>.</p>
+                        </div>
+                        <div class="location"> <span class="glyphicon glyphicon-map-marker"></span> Presque Isle State Park </div>
+                        <div class="datetime"> <span class="glyphicon glyphicon-time"></span> ALL DAY</div>
+                        <div class="attending">
+                            <img src="http://api.randomuser.me/portraits/men/10.jpg" />
+                            <img src="http://api.randomuser.me/portraits/men/23.jpg" />
+                            <img src="http://api.randomuser.me/portraits/men/66.jpg" />
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="320" style="width: 21.56%;">
+                                <span class="sr-only">21.56% Filled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-16">16</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-17">17</time>>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-18">18</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-19">19</time>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-20">20</time>
+                <div class="events">
+                    <div class="event">
+                        <h4></h4>
+                        <div class="desc">
+                            <p style="text-align:center;">Friendships are one of the few things that improve with age<br/>
+                            The family and friends of <br/>
+                            Mouse0270 <br/>
+                            invite you to celebrate his <br/>
+                            24th Birthday and a lifetime of good friendship</p>
+                        </div>
+                        <div class="location"> <span class="glyphicon glyphicon-map-marker"></span> Erie, Pa </div>
+                        <div class="datetime"> <span class="glyphicon glyphicon-time"></span> 10:00pm - 2:00am </div>
+                        <div class="attending">
+                            <img src="https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-xfa1/t1.0-9/417157_4897339837183_626079670_n.jpg" />
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="336" style="width: 0.29%;">
+                                <span class="sr-only">0.29% Filled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-21">21</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-22">22</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-23">23</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-24">24</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-25">25</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-26">26</time>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-27">27</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-28">28</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-29">29</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-30">30</time>
+            </div>
+            <div class="col-xs-12 calendar-day">
+                <time datetime="2014-07-31">31</time>
+            </div>
+            <div class="col-xs-12 calendar-day calendar-no-current-month">
+                <time datetime="2014-08-01">01</time>
+            </div>
+            <div class="col-xs-12 calendar-day calendar-no-current-month">
+                <time datetime="2014-08-02">02</time>
+            </div>
+        </div>
+    </div>
+    <p class="text-center"></p>
+
+   </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
